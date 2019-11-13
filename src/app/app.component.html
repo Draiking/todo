@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="text-center">
+        <h1>ToDo</h1>
+    </div>
+
+    <input type="text" class="form-control" [(ngModel)]="text" (keyup.enter)="sendTODO()">
+
+    <section class="todo-list">
+        <ng-container *ngIf="todos.length > 0">
+            <ng-container *ngFor="let todo of todos">
+                <div class="todo-item">
+                    <button class="checkbox icon" (click)="toggle(todo)">
+                        <mat-icon>{{ todo.completed ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+                    </button>
+                    <span class="todo-item" [ngClass]="{ 'strike' : todo.completed }">{{todo.title}}</span>
+                    <div class="delete">
+                        <button class="checkbox icon" (click)="delete(todo)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </section>
+</div>
